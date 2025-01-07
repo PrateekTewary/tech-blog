@@ -43,3 +43,4 @@ Thumbs.db
 
 #temporary-store
 /temporary-assets
+.env

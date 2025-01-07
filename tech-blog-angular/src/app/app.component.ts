@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   title = 'tech-blog-angular';
 
   private subscription = new Subscription();
-  private TOKEN: string = 'personal-access-token'; // iske bina code ni chlega, baad me mrko mat bolna
+  private TOKEN: string = "123"; // iske bina code ni chlega, baad me mrko mat bolna
   private BASEURL: string = 'https://api.github.com'; // base url
 
   constructor(private http: HttpClient) {}
@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // console.log(process.env);
     this.subscription.add(
       this.buildRoute('hs831', 'hs831', 'README.md').subscribe((result) => {
         const decodedContent = atob(result.content);
