@@ -1,20 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { MarkdownModule, provideMarkdown } from 'ngx-markdown';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HttpClientModule],
+  imports: [RouterOutlet, HttpClientModule, MarkdownModule],
+  providers: [provideMarkdown()],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  title = 'tech-blog-angular';
+  public content: string = '';
 
   private subscription = new Subscription();
-  private TOKEN: string = 'personal-access-token'; // iske bina code ni chlega, baad me mrko mat bolna
+  private TOKEN: string = ''; // iske bina code ni chlega, baad me mrko mat bolna
   private BASEURL: string = 'https://api.github.com'; // base url
 
   constructor(private http: HttpClient) {}
@@ -26,8 +28,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.subscription.add(
       this.buildRoute('hs831', 'hs831', 'README.md').subscribe((result) => {
-        const decodedContent = atob(result.content);
-        console.log(decodedContent);
+        this.content = atob(result.content);
       })
     )
   }
