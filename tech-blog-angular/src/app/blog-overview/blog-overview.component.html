@@ -1,0 +1,10 @@
+<div>
+    <div *ngFor="let section of sections">
+      <h1 (click)="goToDetailsPage(section)">
+        {{section.heading}}
+      </h1>
+      <p>
+        {{section.content}}
+      </p>
+    </div>
+</div>
