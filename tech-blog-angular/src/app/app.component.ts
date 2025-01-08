@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     // console.log(process.env);
     this.subscription.add(
-      this.buildRoute('hs831', 'hs831', 'README.md').subscribe((result) => {
+      this.buildRoute('PrateekTewary', 'tech-blog-content', '1.job-roles/overview/overview.md?ref=1.initial-trials').subscribe((result) => {
         this.content = atob(result.content);
       })
     )
