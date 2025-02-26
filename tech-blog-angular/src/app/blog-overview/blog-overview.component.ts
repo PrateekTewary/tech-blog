@@ -51,6 +51,9 @@ public content: string = '';
         ).subscribe((result) => {
           this.content = atob(result.content); 
           this.sections = markdownConverter(this.content);    
+          console.log("result - ",result);
+          console.log("content - ", this.content);
+          console.log("sections - ",this.sections);
         })
       )
     }

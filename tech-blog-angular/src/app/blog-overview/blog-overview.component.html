@@ -1,10 +1,13 @@
 <div>
-    <div *ngFor="let section of sections">
-      <h1 (click)="goToDetailsPage(section)">
-        {{section.heading}}
-      </h1>
+    <div *ngFor="let section of sections" class="card m-4">
+      <div class="card-body">
+        <h2 (click)="goToDetailsPage(section)" class="fs-3 pointer btn btn-light">
+          {{section.heading}}
+        </h2>
+        <p class="card-text">{{section.content}}</p>
+      </div>
       <p>
-        {{section.content}}
+        
       </p>
     </div>
 </div>
